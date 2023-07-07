@@ -29,13 +29,14 @@
     "email-templates": "^2.4.1",
     "express": "^4.14.0",
     "log4js": "^0.6.38",
+    "node-mailjet": "^6.0.2",
     "nodemailer": "^2.6.0",
     "nodemailer-ses-transport": "^1.4.0",
     "sendgrid": "^4.7.1"
   },
   "devDependencies": {
-    "dotenv": "^2.0.0",
     "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
     "mocha": "^3.0.2",
     "nock": "^8.0.0",
     "supertest": "^2.0.0"

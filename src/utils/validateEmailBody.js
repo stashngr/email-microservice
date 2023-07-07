@@ -7,6 +7,7 @@ const
     path = require('path'),
     sendgrid = require('./sendgrid'),
     aws_ses = require('./aws_ses'),
+    mailjet = require('./mailjet'),
     logger = require('../helpers/logger')().getLogger('ValidateBody'),
     util = require('util');
 //=============================================================================
@@ -45,6 +46,9 @@ function validateEmailBody(req, res) {
             }
             else if(emailSettings.transport.toLowerCase() == 'ses') {
                 return aws_ses(emailSettings, res);
+            }
+            else if(emailSettings.transport.toLowerCase() == 'mailjet') {
+                return mailjet(emailSettings, res);
             }
             else {
                 return res.status(409).json('Please provide a valid Transport.');
