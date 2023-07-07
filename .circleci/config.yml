@@ -1,0 +1,83 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+  aws-ecr: circleci/aws-ecr@8.1.2 # use the AWS ECR orb
+  aws-ecs: circleci/aws-ecs@3.2.0 # use the AWS ECS orb
+  aws-cli: circleci/aws-cli@3.1.1 # use the AWS CLI orb
+  slack: circleci/slack@4.10.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:14.15.5
+    steps:
+      - checkout
+      - run:
+          name: Install node dependencies
+          command: |
+            cd src && npm install
+      - run:
+          name: Update PATH and Define Environment Variable at Runtime
+          command: |
+            echo 'export SENDGRID_API_KEY=$SENDGRID_API_KEY' >> $BASH_ENV
+            echo 'export AWS_ACCESS_KEY_ID=$SES_AWS_ACCESS_KEY_ID' >> $BASH_ENV
+            echo 'export AWS_SECRET_ACCESS_KEY=$SES_AWS_SECRET_ACCESS_KEY' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          environment:
+            NODE_ENV: 'test'
+            PORT: 3030
+            SESRegion: 'eu-central-1'
+            AWS_DEFAULT_REGION: 'eu-central-1'
+          command: |
+            cd src && npm run test
+          name: Run tests
+workflows:
+  deploy-prod:
+    jobs:
+      - test:
+          context: slack-secrets
+          filters:
+            branches:
+              only:
+                - main
+          post-steps:
+            - slack/notify:
+              event: fail
+              template: basic_fail_1
+              mentions: '@<Retnan Daser>'
+      - aws-ecr/build-and-push-image:
+          requires:
+            - test
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: "${AWS_REGION}"
+          repo: 'emaild-prod'
+          tag: "${CIRCLE_SHA1}"
+          context: slack-secrets
+          filters:
+            branches:
+              only:
+                - main
+          post-steps:
+            - slack/notify:
+              event: fail
+              template: basic_fail_1
+              mentions: '@<Retnan Daser>'
+            - slack/notify:
+              event: pass
+              template: success_tagged_deploy_1
+              mentions: '@<Retnan Daser>'
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'emaild-prod-service'
+          cluster: 'emaild-prod-cluster'
+          container-image-name-updates: 'container=emaild-prod-service,tag=${CIRCLE_SHA1}'
+          context: slack-secrets
+          filters:
+            branches:
+              only:
+                - main
+          post-steps:
+            - slack/notify
