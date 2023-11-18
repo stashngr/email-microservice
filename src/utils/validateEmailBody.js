@@ -8,6 +8,7 @@ const
     sendgrid = require('./sendgrid'),
     aws_ses = require('./aws_ses'),
     mailjet = require('./mailjet'),
+    mailchimp = require('./mailchimp'),
     logger = require('../helpers/logger')().getLogger('ValidateBody'),
     util = require('util');
 //=============================================================================
@@ -46,6 +47,9 @@ function validateEmailBody(req, res) {
             }
             else if(emailSettings.transport.toLowerCase() == 'ses') {
                 return aws_ses(emailSettings, res);
+            }
+            else if(emailSettings.transport.toLowerCase() == 'mailchimp') {
+                return mailchimp(emailSettings, res);
             }
             else if(emailSettings.transport.toLowerCase() == 'mailjet') {
                 return mailjet(emailSettings, res);

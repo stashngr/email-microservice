@@ -23,6 +23,7 @@
   },
   "homepage": "https://3ee739c2d89cabae956d484faed4137fa490b546@github.com/nhubnigeria/emailmanagement/blob/master/README.md",
   "dependencies": {
+    "@mailchimp/mailchimp_transactional": "^1.0.50",
     "aws-sdk": "^2.315.0",
     "body-parser": "^1.15.2",
     "ejs": "^2.5.2",
