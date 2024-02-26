@@ -474,7 +474,7 @@
 																	<td style="width: 96px">
 																		<img
 																			alt
-																			src="img/logo.jpeg"
+																			src="images/logo.jpeg"
 																			style="
 																				border: 0;
 																				display: block;
@@ -593,7 +593,7 @@
 																	mso-line-height-alt: 24px;
 																	mso-ansi-font-size: 16px;
 																"
-																>Hi <%= emailbody.user.firstName %>,</span
+																>Hi <%= emailbody.user %>,</span
 															>
 														</p>
 														<p
@@ -633,18 +633,113 @@
 																	mso-line-height-alt: 24px;
 																	mso-ansi-font-size: 16px;
 																"
-																>Your one-time password (OTP) code is:</span
+																>Your Stash account was successfully logged into
+																at <%= emailbody.data %>
+																</span
+															>
+														</p>
+														<p
+															style="
+																margin: 0;
+																mso-line-height-alt: 24px;
+																mso-ansi-font-size: 16px;
+															"
+														>
+															<span
+																style="
+																	font-size: 16px;
+																	font-family: 'General Sans', Arial, sans-serif;
+																	font-weight: 400;
+																	color: #282828;
+																	line-height: 150%;
+																	mso-line-height-alt: 24px;
+																	mso-ansi-font-size: 16px;
+																"
+																>&nbsp;</span
+															>
+														</p>
+														<p
+															style="
+																margin: 0;
+																mso-line-height-alt: 24px;
+																mso-ansi-font-size: 16px;
+															"
+														>
+															<span
+																style="
+																	font-size: 16px;
+																	font-family: 'General Sans', Arial, sans-serif;
+																	font-weight: 400;
+																	color: #282828;
+																	line-height: 150%;
+																	mso-line-height-alt: 24px;
+																	mso-ansi-font-size: 16px;
+																"
+																>If this login was not initiated by you, we
+																highly recommend contacting our customer care
+																team immediately to secure your Stash
+																account.</span
+															>
+														</p>
+														<p
+															style="
+																margin: 0;
+																mso-line-height-alt: 24px;
+																mso-ansi-font-size: 16px;
+															"
+														>
+															<span
+																style="
+																	font-size: 16px;
+																	font-family: 'General Sans', Arial, sans-serif;
+																	font-weight: 400;
+																	color: #282828;
+																	line-height: 150%;
+																	mso-line-height-alt: 24px;
+																	mso-ansi-font-size: 16px;
+																"
+																>&nbsp;</span
+															>
+														</p>
+														<p
+															style="
+																margin: 0;
+																mso-line-height-alt: 24px;
+																mso-ansi-font-size: 16px;
+															"
+														>
+															<span
+																style="
+																	font-size: 16px;
+																	font-family: 'General Sans', Arial, sans-serif;
+																	font-weight: 400;
+																	color: #282828;
+																	line-height: 150%;
+																	mso-line-height-alt: 24px;
+																	mso-ansi-font-size: 16px;
+																"
+																>You can reach us by dialing 0701 111 3422, 0802
+																111 1820, or by emailing&nbsp;</span
 															><span
 																style="
 																	font-size: 16px;
 																	font-family: 'General Sans', Arial, sans-serif;
-																	font-weight: 700;
+																	font-weight: 400;
 																	color: #282828;
 																	line-height: 150%;
+																	text-decoration: underline;
 																	mso-line-height-alt: 24px;
 																	mso-ansi-font-size: 16px;
 																"
-																>&nbsp;<%= emailbody.otp %></span
+																><a
+																	href="mailto:support@stashng.com"
+																	style="
+																		color: #282828;
+																		text-decoration: underline;
+																	"
+																	target="_blank"
+																	>support@stashng.com</a
+																></span
 															><span
 																style="
 																	font-size: 16px;
@@ -655,7 +750,9 @@
 																	mso-line-height-alt: 24px;
 																	mso-ansi-font-size: 16px;
 																"
-																>.</span
+																>. Our dedicated team is ready to assist you in
+																securing your account and addressing any
+																concerns you may have.</span
 															>
 														</p>
 														<p
@@ -695,8 +792,7 @@
 																	mso-line-height-alt: 24px;
 																	mso-ansi-font-size: 16px;
 																"
-																>If you did not initiate this request, please
-																contact our support team immediately.</span
+																>Thank you for choosing Stash.</span
 															>
 														</p>
 														<p
@@ -736,7 +832,7 @@
 																	mso-line-height-alt: 24px;
 																	mso-ansi-font-size: 16px;
 																"
-																>With Love,&nbsp;</span
+																>Best regards,</span
 															>
 														</p>
 														<p
@@ -944,7 +1040,7 @@
 																				<td style="width: 600px">
 																					<img
 																						alt
-																						src="img/spen-freely.png"
+																						src="images/spen-freely.png"
 																						style="
 																							border: 0;
 																							display: block;

@@ -15,7 +15,7 @@
 			name="format-detection"
 		/>
 		<title>
-			✉️ Subject: Money In Alert: <%= emailbody.charge.amount %> Deposited to Your
+			✉️ Subject: Money Out Notification: <%= emailbody.charge.amount %> Sent from Your
 			Account
 		</title>
 		<link
@@ -522,65 +522,23 @@
 																														text-align: left;
 																													"
 																													>Hi <%=
-																													emailbody.user.firstName
-																													%>,<br /><br />Good
-																													news! </span
-																												><span
-																													style="
-																														color: #282828;
-																														font-weight: 500;
-																														font-family: General
-																																Sans,
-																															Arial, sans-serif;
-																														font-size: 16px;
-																														line-height: 24px;
-																														text-align: left;
-																													"
-																													>Money In</span
-																												><span
-																													style="
-																														color: #282828;
-																														font-family: General
-																																Sans,
-																															Arial, sans-serif;
-																														font-size: 16px;
-																														line-height: 24px;
-																														text-align: left;
-																													"
-																													>: The sum of ₦<%=
-																													emailbody.charge.amount %> </span
-																												><span
-																													style="
-																														color: #282828;
-																														font-weight: 500;
-																														font-family: General
-																																Sans,
-																															Arial, sans-serif;
-																														font-size: 16px;
-																														line-height: 24px;
-																														text-align: left;
-																													"
-																													>entered</span
-																												><span
-																													style="
-																														color: #282828;
-																														font-family: General
-																																Sans,
-																															Arial, sans-serif;
-																														font-size: 16px;
-																														line-height: 24px;
-																														text-align: left;
-																													"
-																												>
-																													your account.
-																													<br /><br />It was
-																													sent by <%=
-																													emailbody.sender %>
-																
+																													emailbody.user
+																													%>,<br /><br />Just a
+																													quick heads up!
+																													<br /><br />Money Out:
+																													The sum of ₦<%=
+																													emailbody.charge.amount %>
+																													left your account.
+																													<br /><br />You sent
+																													it to <%= emailbody.beneficiary.accountName
+																													%> with <%=
+																													emailbody.bank %> Bank
 																													on 23/09/2023 at 03:45
-																													pm.<br /><br />Best
-																													Regards, <br />The
-																													Stash Team</span
+																													pm.<br /><br />Stay in
+																													control of your
+																													finances!<br /><br />Regards,
+																													<br />The Stash
+																													Team</span
 																												>
 																											</div>
 																										</td>
@@ -1147,4 +1105,3 @@
 		</div>
 	</body>
 </html>
-z

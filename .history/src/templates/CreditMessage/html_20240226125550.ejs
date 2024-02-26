@@ -15,7 +15,7 @@
 			name="format-detection"
 		/>
 		<title>
-			✉️ Subject: Money In Alert: <%= emailbody.amount %> Deposited to Your
+			✉️ Subject: Money In Alert: <%= emailbody.charge.amount %> Deposited to Your
 			Account
 		</title>
 		<link
@@ -522,7 +522,7 @@
 																														text-align: left;
 																													"
 																													>Hi <%=
-																													emailbody.username
+																													emailbody.user.firstName
 																													%>,<br /><br />Good
 																													news! </span
 																												><span
@@ -548,7 +548,7 @@
 																														text-align: left;
 																													"
 																													>: The sum of ₦<%=
-																													emailbody.amount %> </span
+																													emailbody.charge.amount %> </span
 																												><span
 																													style="
 																														color: #282828;
@@ -576,8 +576,7 @@
 																													<br /><br />It was
 																													sent by <%=
 																													emailbody.sender %>
-																													from <%=
-																													emailbody.bank %> Bank
+																
 																													on 23/09/2023 at 03:45
 																													pm.<br /><br />Best
 																													Regards, <br />The
