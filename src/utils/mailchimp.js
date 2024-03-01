@@ -23,10 +23,10 @@ function sendMail(emailSettings, res) {
                 console.error('Error rendering template ' + JSON.stringify(err));
                 return res.status(409).json('Error rendering template ' + err.message);
             }
-            const fromField = emailSettings.senderName ?
+            else {
+                const fromField = emailSettings.senderName ?
                 `"${emailSettings.senderName}" <${emailSettings.from}>` :
                 `"STASH" <${emailSettings.from}>`;
-            else {
                 mailchimpClient
                 .messages
                 .send(
