@@ -23,6 +23,9 @@ function sendMail(emailSettings, res) {
                 console.error('Error rendering template ' + JSON.stringify(err));
                 return res.status(409).json('Error rendering template ' + err.message);
             }
+            const fromField = emailSettings.senderName ?
+                `"${emailSettings.senderName}" <${emailSettings.from}>` :
+                `"STASH" <${emailSettings.from}>`;
             else {
                 mailchimpClient
                 .messages
@@ -32,7 +35,7 @@ function sendMail(emailSettings, res) {
                             text: html.html,
                             html: html.html,
                             subject: emailSettings.subject,
-                            from_email: emailSettings.from,
+                            from_email: fromField,
                             to: [{ email: emailSettings.to },],
                             important: true
                 
