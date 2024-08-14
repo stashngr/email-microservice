@@ -49,6 +49,7 @@ function sendMail(emailSettings, res) {
                 .catch((err) => {
                     console.error(emailSettings.from + ', mailchimpClient response: ');
                     console.error(err.statusCode)
+                    console.log('the api key in use', process.env.MAILCHIMP_PRIVATE)
                       console.error('there was an mailchimpClient error' + err.message);
                       return res.status(400).json({ error: err.message });
                 });
