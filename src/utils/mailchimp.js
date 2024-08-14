@@ -43,7 +43,7 @@ function sendMail(emailSettings, res) {
                         }
                     })
                 .then((result) => {
-                    console.log(result.body)
+                    console.log('mail chimp response', result)
                     return res.status(200).json(true);
                 })
                 .catch((err) => {
