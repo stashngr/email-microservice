@@ -43,7 +43,8 @@ function sendMail(emailSettings, res) {
                         }
                     })
                 .then((result) => {
-                    console.log(result.body)
+                    console.log('mail chimp response', result)
+                    console.log('the api key in use', process.env.MAILCHIMP_PRIVATE)
                     return res.status(200).json(true);
                 })
                 .catch((err) => {
