@@ -15,7 +15,7 @@
 			name="format-detection"
 		/>
 		<title>
-			✉️ Subject: Money Out Notification: <%= emailbody.charge.amount %> Sent from Your
+			✉️ Subject: Money Out Notification: <%= (emailbody.charge.amount / 100).toFixed(2) %> Sent from Your
 			Account
 		</title>
 		<link
